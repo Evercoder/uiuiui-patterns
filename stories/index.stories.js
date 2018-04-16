@@ -4,10 +4,14 @@ import { storiesOf } from '@storybook/react';
 import { action } from '@storybook/addon-actions';
 import { linkTo } from '@storybook/addon-links';
 
-import { Button, Welcome } from '@storybook/react/demo';
+import LinePattern from '../components/LinePattern';
 
-storiesOf('Welcome', module).add('to Storybook', () => <Welcome showApp={linkTo('Button')} />);
-
-storiesOf('Button', module)
-  .add('with text', () => <Button onClick={action('clicked')}>Hello Button</Button>)
-  .add('with some emoji', () => <Button onClick={action('clicked')}>😀 😎 👍 💯</Button>);
+storiesOf('LinePattern', module)
+	.add('Basic', () => {
+		return <svg>
+			<defs>
+				<LinePattern id='mypattern' size='20'/>
+			</defs>
+			<rect x='0' y='0' width='100%' height='100%' fill="url(#mypattern)"/>
+		</svg>
+	});
